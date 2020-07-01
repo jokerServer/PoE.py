@@ -18,22 +18,22 @@ class Client(ClientBase):
 
     def request_gen(self, url, params=None):
         http = self.pool
-        params['format'] = 'json'
+        params["format"] = "json"
         final_url = f"{url}"
-        if 'where' in params:
-            params['where'] = quote_plus(params['where'])
-        if 'titles' in params:
-            params['titles'] = quote_plus(params['titles'])
+        if "where" in params:
+            params["where"] = quote_plus(params["where"])
+        if "titles" in params:
+            params["titles"] = quote_plus(params["titles"])
         for key, value in params.items():
             final_url = f"{final_url}&{key}={value.replace(' ', '%20')}"
 
         try:
-            r = http.request('GET', final_url)
+            r = http.request("GET", final_url)
         except Exception:
             return print(final_url, params)
 
         try:
-            resp = json.loads(r.data.decode('utf-8'))
+            resp = json.loads(r.data.decode("utf-8"))
         except (urllib3.exceptions.TimeoutError, urllib3.exceptions.ConnectionError):
             raise RequestException(r, {})
 
@@ -61,18 +61,23 @@ class Client(ClientBase):
 
     def search(self, name: str):
         search_params = {
-            'tables': 'skill, items',
-            'join_on': 'skill._pageName=items._pageName',
-            'fields': 'items._pageName=name,tags',
-            'where': f'name%20LIKE%20%22{name}%%22'
+            "tables": "skill, items",
+            "join_on": "skill._pageName=items._pageName",
+            "fields": "items._pageName=name,tags",
+            "where": f"name%20LIKE%20%22{name}%%22",
         }
-        results = self.extract_cargoquery(self.request_gen(self.base_url, params=search_params))
+        results = self.extract_cargoquery(
+            self.request_gen(self.base_url, params=search_params)
+        )
         fetched_results = []
         for result in results:
-            if 'gem' in result['tags']:
+            if "gem" in result["tags"]:
                 # FIXME: incorrect call arguments
-                fetched_results.append(self.get_gems({'name': f'{result["name"]}'})[0])
-            elif any(i_type in result['tags'] for i_type in ['ring', 'amulet', 'belt', 'armour']):
+                fetched_results.append(self.get_gems({"name": f'{result["name"]}'})[0])
+            elif any(
+                i_type in result["tags"]
+                for i_type in ["ring", "amulet", "belt", "armour"]
+            ):
                 # FIXME: unresolved attribute
-                fetched_results.append(self.get_items({'name': f'{name}%'})[0])
+                fetched_results.append(self.get_items({"name": f"{name}%"})[0])
         return fetched_results

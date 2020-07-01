@@ -28,8 +28,28 @@ class Requirements:
 
 
 class Item:
-    def __init__(self, base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                 is_relic, alt_art, quality, implicits, explicits, tags, icon, influences, *args):
+    def __init__(
+        self,
+        base,
+        item_class,
+        name,
+        rarity,
+        size,
+        drop,
+        requirements,
+        lore,
+        help_text,
+        is_corrupted,
+        is_relic,
+        alt_art,
+        quality,
+        implicits,
+        explicits,
+        tags,
+        icon,
+        influences,
+        *args,
+    ):
         self.base = base
         self.item_class = item_class
         self.name = name
@@ -55,52 +75,166 @@ class Item:
 
 
 class DivCard(Item):
-    def __init__(self, base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                 is_relic, alt_art, quality, implicits, explicits, tags, icon, influences, div_data):
-        super().__init__(base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                         is_relic, alt_art, quality, implicits, explicits, tags, icon, influences)
-        self.card_art = div_data['card_art']
-        self.stack_size = div_data['stack_size']
-        self.reward_flavor = div_data['reward_flavor']
-        self.reward = div_data['reward']
+    def __init__(
+        self,
+        base,
+        item_class,
+        name,
+        rarity,
+        size,
+        drop,
+        requirements,
+        lore,
+        help_text,
+        is_corrupted,
+        is_relic,
+        alt_art,
+        quality,
+        implicits,
+        explicits,
+        tags,
+        icon,
+        influences,
+        div_data,
+    ):
+        super().__init__(
+            base,
+            item_class,
+            name,
+            rarity,
+            size,
+            drop,
+            requirements,
+            lore,
+            help_text,
+            is_corrupted,
+            is_relic,
+            alt_art,
+            quality,
+            implicits,
+            explicits,
+            tags,
+            icon,
+            influences,
+        )
+        self.card_art = div_data["card_art"]
+        self.stack_size = div_data["stack_size"]
+        self.reward_flavor = div_data["reward_flavor"]
+        self.reward = div_data["reward"]
 
 
 class Prophecy(Item):
-    def __init__(self, base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                 is_relic, alt_art, quality, implicits, explicits, tags, icon, influences, proph_data):
-        super().__init__(base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                         is_relic, alt_art, quality, implicits, explicits, tags, icon, influences)
-        self.prediction = proph_data['prediction text']
-        self.objective = proph_data['objective']
-        self.seal_cost = proph_data['seal cost']
+    def __init__(
+        self,
+        base,
+        item_class,
+        name,
+        rarity,
+        size,
+        drop,
+        requirements,
+        lore,
+        help_text,
+        is_corrupted,
+        is_relic,
+        alt_art,
+        quality,
+        implicits,
+        explicits,
+        tags,
+        icon,
+        influences,
+        proph_data,
+    ):
+        super().__init__(
+            base,
+            item_class,
+            name,
+            rarity,
+            size,
+            drop,
+            requirements,
+            lore,
+            help_text,
+            is_corrupted,
+            is_relic,
+            alt_art,
+            quality,
+            implicits,
+            explicits,
+            tags,
+            icon,
+            influences,
+        )
+        self.prediction = proph_data["prediction text"]
+        self.objective = proph_data["objective"]
+        self.seal_cost = proph_data["seal cost"]
 
 
 class Weapon(Item):
-    def __init__(self, base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                 is_relic, alt_art, quality, implicits, explicits, tags, icon, influences, weapon_stats):
-        super().__init__(base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                         is_relic, alt_art, quality, implicits, explicits, tags, icon, influences)
+    def __init__(
+        self,
+        base,
+        item_class,
+        name,
+        rarity,
+        size,
+        drop,
+        requirements,
+        lore,
+        help_text,
+        is_corrupted,
+        is_relic,
+        alt_art,
+        quality,
+        implicits,
+        explicits,
+        tags,
+        icon,
+        influences,
+        weapon_stats,
+    ):
+        super().__init__(
+            base,
+            item_class,
+            name,
+            rarity,
+            size,
+            drop,
+            requirements,
+            lore,
+            help_text,
+            is_corrupted,
+            is_relic,
+            alt_art,
+            quality,
+            implicits,
+            explicits,
+            tags,
+            icon,
+            influences,
+        )
 
-        self.attack_speed = weapon_stats['attack speed range text']
-        self.chaos_min = weapon_stats['chaos damage min range text']
-        self.chaos_max = weapon_stats['chaos damage max range text']
+        self.attack_speed = weapon_stats["attack speed range text"]
+        self.chaos_min = weapon_stats["chaos damage min range text"]
+        self.chaos_max = weapon_stats["chaos damage max range text"]
 
-        self.cold_min = weapon_stats['cold damage min range text']
-        self.cold_max = weapon_stats['cold damage max range text']
+        self.cold_min = weapon_stats["cold damage min range text"]
+        self.cold_max = weapon_stats["cold damage max range text"]
 
-        self.fire_min = weapon_stats['fire damage min range text']
-        self.fire_max = weapon_stats['fire damage max range text']
+        self.fire_min = weapon_stats["fire damage min range text"]
+        self.fire_max = weapon_stats["fire damage max range text"]
 
-        self.lightning_min = weapon_stats['lightning damage min range text']
-        self.lightning_max = weapon_stats['lightning damage max range text']
+        self.lightning_min = weapon_stats["lightning damage min range text"]
+        self.lightning_max = weapon_stats["lightning damage max range text"]
 
-        self.physical_min = weapon_stats['physical damage min range text']
-        self.physical_max = weapon_stats['physical damage max range text']
+        self.physical_min = weapon_stats["physical damage min range text"]
+        self.physical_max = weapon_stats["physical damage max range text"]
 
         self.range = f"{weapon_stats['weapon range range text']}"
         self.critical_chance = f"{weapon_stats['critical strike chance range text']}"
         self.quality = 20
-    
+
     @property
     def chaos_damage(self):
         if self.chaos_max != "0" and self.chaos_max != 0:
@@ -138,34 +272,85 @@ class Weapon(Item):
 
 
 class Armour(Item):
-    def __init__(self, base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                 is_relic, alt_art, quality, implicits, explicits, tags, icon, influences, armour_stats):
-        super().__init__(base, item_class, name, rarity, size, drop, requirements, lore, help_text, is_corrupted,
-                         is_relic, alt_art, quality, implicits, explicits, tags, icon, influences)
-        if armour_stats['armour range text'] != '0':
-            self.armour = armour_stats['armour range text']
+    def __init__(
+        self,
+        base,
+        item_class,
+        name,
+        rarity,
+        size,
+        drop,
+        requirements,
+        lore,
+        help_text,
+        is_corrupted,
+        is_relic,
+        alt_art,
+        quality,
+        implicits,
+        explicits,
+        tags,
+        icon,
+        influences,
+        armour_stats,
+    ):
+        super().__init__(
+            base,
+            item_class,
+            name,
+            rarity,
+            size,
+            drop,
+            requirements,
+            lore,
+            help_text,
+            is_corrupted,
+            is_relic,
+            alt_art,
+            quality,
+            implicits,
+            explicits,
+            tags,
+            icon,
+            influences,
+        )
+        if armour_stats["armour range text"] != "0":
+            self.armour = armour_stats["armour range text"]
         else:
             self.armour = None
 
-        if armour_stats['evasion range text'] != '0':
-            self.evasion = armour_stats['evasion range text']
+        if armour_stats["evasion range text"] != "0":
+            self.evasion = armour_stats["evasion range text"]
         else:
             self.evasion = None
 
-        if armour_stats['energy shield range text'] != '0':
-            self.energy_shield = armour_stats['energy shield range text']
+        if armour_stats["energy shield range text"] != "0":
+            self.energy_shield = armour_stats["energy shield range text"]
         else:
             self.energy_shield = None
 
-        if 'block range average' in armour_stats and armour_stats['block range average']:
-            self.block = armour_stats['block range average']
+        if (
+            "block range average" in armour_stats
+            and armour_stats["block range average"]
+        ):
+            self.block = armour_stats["block range average"]
         else:
             self.block = None
         self.quality = 20
 
 
 class Mod:
-    def __init__(self, mod_id, name, group, mod_type, domain, gen_type, level_requirement, stat_text):
+    def __init__(
+        self,
+        mod_id,
+        name,
+        group,
+        mod_type,
+        domain,
+        gen_type,
+        level_requirement,
+        stat_text,
+    ):
         self.mod_id = mod_id
         self.name = name
         self.group = group
@@ -177,7 +362,18 @@ class Mod:
 
 
 class PassiveSkill:
-    def __init__(self, asc_class, flavor_text, icon, is_keystone, is_notable, name, reminder_text, stat_text, int_id):
+    def __init__(
+        self,
+        asc_class,
+        flavor_text,
+        icon,
+        is_keystone,
+        is_notable,
+        name,
+        reminder_text,
+        stat_text,
+        int_id,
+    ):
         self.asc_class = asc_class if asc_class else None
         self.flavor_text = flavor_text if flavor_text else None
         self.icon = icon if icon else None
@@ -191,10 +387,31 @@ class PassiveSkill:
 
 
 class Gem:
-    def __init__(self, gem_id, cast_time, description, name, weapon_type_restriction, stat_text, quality_bonus,
-                 radius, radius_description, radius_secondary, radius_secondary_description, radius_tertiary,
-                 radius_tertiary_description, skill_icon, skill_screenshot, inventory_icon, gem_tags, tags,
-                 stats_per_level, is_aura, vendors, requirements):
+    def __init__(
+        self,
+        gem_id,
+        cast_time,
+        description,
+        name,
+        weapon_type_restriction,
+        stat_text,
+        quality_bonus,
+        radius,
+        radius_description,
+        radius_secondary,
+        radius_secondary_description,
+        radius_tertiary,
+        radius_tertiary_description,
+        skill_icon,
+        skill_screenshot,
+        inventory_icon,
+        gem_tags,
+        tags,
+        stats_per_level,
+        is_aura,
+        vendors,
+        requirements,
+    ):
         self.id = gem_id
         self.cast_time = cast_time
         self.description = description

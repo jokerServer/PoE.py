@@ -12,9 +12,9 @@ if __name__ == "__main__":
             url += f"&fields=_pageName=name&format=json&order_by=name&limit=500&offset={counter}"
             response = requests.get(url)
             response_json = response.json()
-            if not response_json['cargoquery']:
+            if not response_json["cargoquery"]:
                 break
-            for item in response_json['cargoquery']:
+            for item in response_json["cargoquery"]:
                 items["names"].append(item["title"]["name"])
             counter += 500
             print("Sleeping, counter is at ", counter)
